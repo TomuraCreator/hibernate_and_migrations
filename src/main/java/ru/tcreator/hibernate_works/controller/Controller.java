@@ -1,23 +1,24 @@
 package ru.tcreator.hibernate_works.controller;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import ru.tcreator.hibernate_works.entity.Test;
+import ru.tcreator.hibernate_works.entity.Flight;
+import ru.tcreator.hibernate_works.repository.FlightRepository;
 
-@RequestMapping("/")
+@RequestMapping("/api")
 @RestController
 public class Controller {
+    private final FlightRepository flightRepository;
 
-
-    @GetMapping("test")
-    public Test getString() {
-        return new Test("test", "Testing", 1);
+    public Controller(FlightRepository flightRepository) {
+        this.flightRepository = flightRepository;
     }
 
-    @GetMapping("pun")
-    public Test getStringPun() {
-        return new Test("test", "Testing", 1);
+
+    @GetMapping("/flight/{id}")
+    public Flight getFlight(@PathVariable int id) {
+        return flightRepository.getFlightData(id);
     }
 }

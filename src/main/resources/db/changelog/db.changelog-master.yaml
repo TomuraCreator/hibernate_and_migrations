@@ -1,3 +1,1 @@
 databaseChangeLog:
-  - include:
-      file: script.sql
