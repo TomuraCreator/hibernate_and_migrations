@@ -1,10 +1,8 @@
 package ru.tcreator.hibernate_works.controller;
 
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import ru.tcreator.hibernate_works.entity.Aircraft;
+import ru.tcreator.hibernate_works.exceptions.DataNotFound;
 import ru.tcreator.hibernate_works.repository.AircraftRepos;
 
 @RestController
@@ -18,6 +16,7 @@ public class AircraftController {
 
 
     @GetMapping("/aircraft/{id}")
+    @ExceptionHandler(DataNotFound.class)
     public Aircraft getAircraft(@PathVariable String id) {
         return aircraftRepository.findAircraftByCode(id);
     }

@@ -1,11 +1,11 @@
 package ru.tcreator.hibernate_works.repository;
 import org.springframework.stereotype.Repository;
 import ru.tcreator.hibernate_works.entity.Aircraft;
-import ru.tcreator.hibernate_works.entity.Airport;
+import ru.tcreator.hibernate_works.exceptions.DataNotFound;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
-import java.util.List;
+
 
 
 @Repository
